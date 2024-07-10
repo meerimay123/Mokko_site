@@ -22,11 +22,12 @@ from menu.views import HomeView, CoffeesView, CoffeeView, BlogView, AboutView, C
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', HomeView.as_view()),
-    path('coffees/', CoffeesView.as_view()),
-    path('coffee/', CoffeeView.as_view()),
-    path('blog/', BlogView.as_view()),
-    path('about/', AboutView.as_view()),
-    path('contact/', ContactView.as_view()),
+    path('home/', HomeView.as_view(), name='home_list'),
+    path('coffees/', CoffeesView.as_view(), name='coffee_list'),
+    path('coffee/<int:pk>/', CoffeeView.as_view(), name='coffee_detail_url'),
+    path('blog/', BlogView.as_view(), name='blog_list'),
+    path('about/', AboutView.as_view(), name='about_list'),
+    path('contact/', ContactView.as_view(), name='contact_list'),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
