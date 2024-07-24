@@ -18,7 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
-from menu.views import HomeView, CoffeesView, CoffeeView, BlogView, AboutView, ContactView
+from menu.views import HomeView, CoffeeView, BlogView, AboutView, ContactView, CoffeesView, BlogDetailView, client_contact_create_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +28,9 @@ urlpatterns = [
     path('blog/', BlogView.as_view(), name='blog_list'),
     path('about/', AboutView.as_view(), name='about_list'),
     path('contact/', ContactView.as_view(), name='contact_list'),
+    path('blog-detail/<int:pk>/', BlogDetailView.as_view(), name='blog_detail_url'),
+    path('home/client-contact-create/', client_contact_create_view)
+
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
